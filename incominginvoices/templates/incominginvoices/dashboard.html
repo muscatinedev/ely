@@ -1,10 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'main/base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block content %}
+
+
+<h1>invoices</h1>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-body">
+                <form method="get" class="">
+                    {{myFilters.form}}
+                    <button class="btn btn-sm btn-info " type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-md-7">
+            <a class="btn btn-primary  btn-sm btn-block" href="{% url 'incominginvoice-create' %}">Register new Invoice</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>Number</th>
+                    <th>Date</th>
+                    <th>Supplier</th>
+                    <th>Total (wat incl.)</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {%for invoice in object_list%}
+                    <tr>
+                        <td><a href="{{invoice.get_absolute_url}}">{{invoice.invoiceNumber}}</a></td>
+                        <td>{{invoice.invoiceDate|date:"d/m/y"}}</td>
+                        <td>{{invoice.supplier}}</td>
+                        <td>{{invoice.totalWithWat}}</td>
+                        <td><a  class="btn btn-sm btn-info" href="{% url 'incominginvoice-update' invoice.id %}">Update</a></td>
+                        <td><a  class="btn btn-sm btn-danger" href="{% url 'incominginvoice-delete' invoice.id %}">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="col-md-5 ">
+            <div class="card">
+                <div class="container">
+                    <h6>Recently Added:</h6>
+                    <ul>
+                        {% for ra in last5added %}
+                        <li>Num {{ra.invoiceNumber}} - Date {{ra.invoiceDate|date:"d/m/y"}} - Suppl. {{ra.supplier}} - Reg. {{ra.registrationDate|date:"d/m/y"}} </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <hr>
+
+
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+{% endblock content %}

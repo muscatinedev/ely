@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 from suppliers.models import Supplier, Article
 
 
@@ -12,6 +14,9 @@ class Invoice(models.Model):
     totVat = models.FloatField(default=0)
     totalWithWat = models.FloatField(default=0)
 
+    def get_absolute_url(self):
+        return reverse("incominginvoice-detail",
+                       kwargs={"pk": self.pk})  # passing arg through kwargs and call the name of the url
 
 # TODO override the save method to store totals
 
