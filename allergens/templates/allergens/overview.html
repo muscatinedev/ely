@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2>Allergens </h2><hr>
+<!--    <form method="post">-->
+<!--        {{form}}-->
+<!--        <input class="btn " type="submit" value="Add New Allergen">-->
+<!--    </form>-->
+<!--    <br>-->
+
+    <div class="box-element ">
+        {% for a in allergens%}
+        <strong>{{a.name}}, </strong>
+        {% endfor %}
+    </div>
+
+
+{% endblock content %}

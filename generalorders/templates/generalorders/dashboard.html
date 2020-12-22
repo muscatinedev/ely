@@ -1,0 +1,66 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2>General Order Overview</h2>
+<div class="row">
+    <div class="col-6">
+        <a class="btn btn-primary btn-block" href="{% url 'generalorder-create' %}">Place new Order</a>
+        <div class="card card-body">
+            <h5 class="card-title ">Pendings Orders</h5>
+
+            <table class="table">
+
+                {% for obj in object_list %}
+                <tr>
+                    <td><a href="{{obj.get_absolute_url}}" class="btn btn-sm btn-info" >view</a></td>
+
+                    <td>{{obj.orderNumber}}</td><td>{{obj.orderDate}}</td><td>{{obj.get_status_display}}</td>
+                    <td><a href="#" class="btn btn-sm btn-warning" >Edit Order</a></td>
+                    <td><a href="{% url 'generalorder-submit' obj.id %}" class="btn btn-primary btn-sm " >Submit Order</a></td>
+                    <td><a href="#" class="btn btn-sm btn-danger" >Delete Order <span>
+
+                                <i class="fal fa-atom"></i>
+                            </span>
+                    </a></td>
+
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card card-body">
+            <h5 class="card-title ">Submitted Orders</h5>
+
+            <table class="table">
+
+                {% for obj in submitteds %}
+                <tr>
+                    <td><a href="{{obj.get_absolute_url}}" class="btn btn-sm btn-info" >view</a></td>
+
+                    <td>{{obj.orderNumber}}</td><td>{{obj.orderDate}}</td><td>{{obj.status_display}}</td>
+
+                    <td><a href="#" class="btn btn-sm btn-danger" >Delete Order <span>
+
+                                <i class="fal fa-atom"></i>
+                            </span>
+                    </a></td>
+
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock content %}
+

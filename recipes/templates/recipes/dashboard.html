@@ -1,0 +1,116 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-body">
+            <form method="get" class="">
+                {{myFilters.form}}
+                <button class="btn btn-sm btn-info " type="submit">Search</button>
+            </form>
+
+
+        </div>
+
+
+
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-7">
+
+
+            <a class="btn btn-primary  btn-sm btn-block" href="{% url 'recipe-create' %}">Create Recipe</a>
+            <table class="table table-sm">
+                <tr>
+<!--                    <th></th>-->
+                    <th>Recipe</th>
+                    <th>Created on</th>
+                    <th></th><th></th>
+                </tr>
+                {%for recipe in object_list%}
+                <tr>
+<!--                    <td><a class="btn btn-sm btn-info" href="{{recipe.get_absolute_url}}" >view </a>        </td>-->
+                    <td>   <a href="{{recipe.get_absolute_url}}">       {{recipe.name}}       </a>          </td>
+                    <td>{{recipe.date_created|date:"d/m/y"}}      </td>
+                    <td><a  class="btn btn-sm btn-info" href="{% url 'recipe-update' recipe.id %}">Update</a></td>
+                    <td><a  class="btn btn-sm btn-danger" href="{% url 'recipe-delete' recipe.id %}">Delete</a></td>
+
+                </tr>
+
+
+                {% endfor %}
+            </table>
+        </div>
+
+    <div class="col-md-5 ">
+        <div class="card">
+            <div class="container">
+                <h6>Recently Added:</h6>
+                <ul>
+                    {% for ra in last5added %}
+                    <li>{{ra.title}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="card">
+            <div class="container">
+                <h6>Wish to Cook:</h6>
+                <table class="table table-sm">
+
+                    {%for wtc in wishToCooks%}
+                    <tr>
+
+                        <td>{{wtc.recipe}}      </td>
+                        <td>{{wtc.date_created|date:"d/m/y"}}      </td>
+
+                        <td><a  class="btn btn-sm btn-warning" href="{% url 'recipe-remove' wtc.id %}">Remove</a></td>
+
+                    </tr>
+
+
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+
+
+
+
+
+        </div>
+
+
+        </div>
+
+
+
+
+
+
+<!--<div class="row">-->
+<!--    <div class="col">-->
+<!--        <div class="card card-body">-->
+<!--            <form method="get" class="">-->
+<!--                {{myFilter.form}}-->
+<!--                <button class="btn btn-sm btn-info " type="submit">Search</button>-->
+<!--            </form>-->
+
+<!--        </div>-->
+
+
+<!--    </div>-->
+
+
+<!--</div>-->
+
+
+
+{% endblock content %}

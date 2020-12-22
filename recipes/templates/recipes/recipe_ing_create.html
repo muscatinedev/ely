@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h5>Ingredient Form</h5>
+<form method="post">
+    {% csrf_token %}
+    {{ formset.management_form  }}
+    {% for form in formset %}
+        {{form}}
+        <hr>
+    {% endfor %}
+
+    <br>
+  <input class="btn btn-success" type="submit" value="Save">
+</form>
+
+{% endblock content %}
+

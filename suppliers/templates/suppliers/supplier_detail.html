@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+    <br>
+    <div class="row">
+        <div class="col-5">
+            <div class="box-element">
+            <h3>Supplier Detail</h3>
+            <p><strong>Name: </strong> {{object.name}}</p>
+            <p><strong>Vat n: </strong> {{object.vatNumber}} <strong> SNN: Name: </strong> {{object.socialSecurityNumber}}</p>
+            <p><strong>Tel: </strong> {{object.telephone}}</p>
+            <p><strong>e-mail: </strong> {{object.email}} <strong> web: </strong> {{object.webSite}}</p>
+            <p><strong>Street: </strong> {{object.street}}</p>
+            <p><strong>Zip Code: </strong> {{object.zipCode}} <strong> City: </strong> {{object.city}}</p>
+            <p><strong>State: </strong> {{object.state}} <strong> Nation: </strong> {{object.state}}</p>
+            </div>
+        </div>
+        <a class="btn btn-info" href="{% url 'suppliers-overview' %}">Back</a>
+    </div>
+{% endblock content %}

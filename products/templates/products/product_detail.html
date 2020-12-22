@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+    <br>
+    <div class="row">
+        <div class="col-5">
+            <div class="box-element">
+                <h3>Product Detail</h3>
+                <p><strong>Brand: </strong> {{object.brand}}</p>
+                <p><strong> Name: </strong> {{object.name}}</p>
+                <p><strong>Category: </strong> {{object.category}}</p>
+                <p><strong> Good or Service: </strong> {{object.goodOrService}}</p>
+            </div>
+        </div>
+        <a class="btn btn-info" href="{% url 'products-overview' %}">Back</a>
+    </div>
+
+
+
+
+{% endblock content %}

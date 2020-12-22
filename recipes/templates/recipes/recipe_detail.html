@@ -1,0 +1,112 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row p-1">
+
+        <h5>{{object.title|capfirst}} ({{object.shortname}}) created on {{object.date_created|date:"d/m/y"}}    </h5>
+
+</div>
+
+
+        <div class="row">
+            <div class="col-md-3 ">
+            <div class="box-element">
+                <h6>Ingredients - {{object.servings}} servings</h6>
+                    <ul>
+                        {% for item in items %}
+                        <li>{{item.ingredient.name}}      {{item.quantity}}  {{item.uom}}  ({{item.destination}})    </li>
+                        {% endfor%}
+                    </ul>
+            </div>
+            <div>
+            <br>
+                <div class="box-element-bluish">
+                    <div>
+                        <strong>Preparation Time:</strong> {{object.preptime}} min           <strong>Cooking Time:</strong> {{object.cooktime}} min
+                    </div>
+                    <hr>
+                <h5>Directions:</h5>
+                {{object.directions}}
+                </div>
+
+                <div class="box-element-hi4">
+                    <h6>Description:</h6> {{object.description}}
+
+
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+
+    <div class="col-md-4 ">
+        <div class="box-element-hi4">
+
+
+                {{object.image}}       {{object.platingimage}}
+
+
+        </div>
+
+
+        <div class="box-element-pinkish">
+            <h6>Nutritional Values</h6>
+                <div class="row">
+
+
+                        <ul>
+                            <li>Calories: {{object.calories|floatformat:0}}  </li>
+                            <li>Carbohydrates: {{object.car|floatformat:4}} </li>
+                            <li>Proteins: {{object.pro|floatformat:4}}  </li>
+                            <li>fat: {{object.fat|floatformat:4}}</li>
+                            <li>Starch: {{object.sta|floatformat:4}} </li>
+                        </ul>
+
+
+                </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <br>
+
+
+</div>
+<br><br>
+<a class="btn btn-info " href="{% url 'recipes-dashboard' %}">Back</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

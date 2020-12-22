@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h5>List of Suppliers</h5>
+    {% for sup in object_list %}
+       <p>
+           <a href="{{obj.get_absolute_url}}" class="btn btn-sm btn-info" > {{sup.name}} - {{sup.city}}</a>
+       </p>
+
+    {% endfor %}
+{% endblock content %}

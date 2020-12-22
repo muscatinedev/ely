@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2>Categories </h2>
+    <hr>
+    <div class="box-element">
+        <form method="post" >
+            {% csrf_token%}
+            {{form}}
+            <input class="btn " type="submit" value="Add New Category">
+        </form>
+    </div>
+    <hr>
+    <div>
+        <div class="row ">
+                    <div class="col">
+                    <h6>Food Categories</h6>
+                    {% for  a in foodcats%}
+                    <p>{{a.name}} </p>
+                    {% endfor %}
+                </div>
+                <div class="col">
+                    <h6>Non Food Categories</h6>
+                    {% for a in nfcats%}
+                    <p>{{a.name}} </p>
+                    {% endfor %}
+                </div>
+                <div class="col">
+                    <h6>Service Categories</h6>
+                    {% for a in sercats%}
+                    <p>{{a.name}} </p>
+                    {% endfor %}
+                </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock content %}

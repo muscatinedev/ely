@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<h5>Ingredient Missing Nutritionals</h5>
+
+<table class="table">
+    <thead>
+    <tr>
+
+        <th>Category</th>
+        <th>Ingredient</th>
+        <th></th>
+
+    </tr>
+
+    </thead>
+    <tbody>
+    {% for obj in object_list %}
+    <tr>
+
+        <td>{{obj.category}}</td>
+        <td>{{obj.name}}</td>
+        <td><a href="{% url 'ingredient-update' obj.pk %}" class="btn btn-sm btn-warning" >edit</a></td>
+
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+
+{% endblock content %}

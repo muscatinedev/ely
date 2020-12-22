@@ -1,0 +1,101 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+<!--{% load crispy_forms_tags %}-->
+
+{% block content %}
+
+
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-md-6">
+            <h5>Create New Recipe</h5>
+            <div class="card card-body">
+                <form method="post">
+                    {% csrf_token %}
+
+                    <div class="form-row">
+                        <div class="col">
+                            <label class="form-label">{{form.name.label}}*</label>  {% render_field form.name class+="form-control" %}
+                        </div>
+                        <div class="col">
+                            <label class="form-label">{{form.origin.label}}*</label>  {% render_field form.origin class+="form-control" %}
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-row">
+                        <div class="col">
+                            <label class="form-label">{{form.title.label}}*</label>  {% render_field form.title class+="form-control" %}
+                        </div>
+                        <div class="col">
+                            <label class="form-label">{{form.shortname.label}}*</label>  {% render_field form.shortname class+="form-control" %}
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="form-row">
+                        <div class="col">
+                            <label class="form-label ">{{form.servings.label}}*</label>  {% render_field form.servings class+="form-control"  %}
+                        </div>
+                        <div class="col">
+                            <label class="form-label">{{form.cooktime.label}}</label>  {% render_field form.cooktime class+="form-control" %}
+
+                        </div>
+                        <div class="col">
+                            <label class="form-label">{{form.preptime.label}}</label>  {% render_field form.preptime class+="form-control" %}
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-row">
+                        <div class="col">
+                            <label class="form-label ">{{form.servings.cookProgram}}*</label>  {% render_field form.cookProgram class+="form-control"  %}
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="form-row">
+                            <div class="col">
+                                <label class="form-label">{{form.description.label}}</label>  {% render_field form.description class+="form-control" rows=5 %}
+                            </div>
+                    </div>
+
+                <br>
+                <a class="btn btn-info" href="{% url 'recipes-dashboard' %}">Cancel</a> <input class="btn btn-success" type="submit" value="Save">
+                </form>
+
+            </div>
+        </div>
+
+        <div class="col">
+        </div>
+
+    </div>
+
+
+
+
+{% endblock content %}
+

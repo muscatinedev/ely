@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+{% load static %}
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+{% block content %}
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <h3>Ingredient Detail</h3>
+    <div class="box-element">
+        <p><strong>Name:</strong> {{object.name|capfirst}}</p>
+        <p><strong>Category:</strong> {{object.category}}</p>
+        <p><strong>Um:</strong> {{object.uomRef}}</p>
+
+        <h5>Nutritional Values</h5>
+
+        <div id="myChart" class="pie-mid">
+
+
+        </div>
+        <p> È importate ricordare che i carboidrati e le proteine forniscono 4 calorie per ogni grammo, mentre un grammo di grassi fornisce 9 calorie.</p>
+        <p>Calories: {{object.cal}}  Carbohydrates: {{object.cal}} Proteins: {{object.pro}}  fat: {{object.fat}} Starch: {{object.sta}}  </p>
+        <p><strong>Location:</strong> {{object.location}}   <strong>Cost Center:</strong> {{object.costCenter}}    </p>
+        <a class="btn btn-info" href="{% url 'ingredients-overview' %}">Back</a>
+    </div>
+
+
+<script>
+    zingchart.render({
+        id: 'myChart',
+        data: {
+            type: 'pie',
+            series: [
+                { values: [54] },
+                { values: [100] }
+            ]
+        }
+    });
+</script>
+
+
+{% endblock content %}

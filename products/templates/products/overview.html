@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h5>Products</h5>
+    <br>
+<a class="btn btn-success" href="{% url 'product-create' %}">New</a>
+<br>
+<br>
+    {% for obj in object_list %}
+        <a href="{{obj.get_absolute_url}}">view </a>{{obj.name}} - {{obj.city}}
+        <a href="{% url 'product-update' obj.pk %}" class="text-warning" >edit</a>
+        <a href="{% url 'product-delete' obj.pk %}"  class="text-danger" >delete</a>
+        <hr>
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<!--<div class="row">-->
+<!--    <div class="col">-->
+<!--        <div class="card card-body">-->
+<!--            <form method="get" class="">-->
+<!--                {{myFilter.form}}-->
+<!--                <button class="btn btn-sm btn-info " type="submit">Search</button>-->
+<!--            </form>-->
+
+<!--        </div>-->
+
+
+<!--    </div>-->
+
+
+<!--</div>-->
+
+<hr/>
+
+    {% for obj in object_list %}
+        {{obj}}<br>
+    {% endfor %}
+
+
+
+{% endblock content %}
