@@ -13,6 +13,7 @@ class Invoice(models.Model):
     total = models.FloatField(default=0)
     totVat = models.FloatField(default=0)
     totalWithWat = models.FloatField(default=0)
+    contabilized = models.BooleanField(default=False)
 
     def get_absolute_url(self):
         return reverse("incominginvoice-detail",
@@ -22,17 +23,18 @@ class Invoice(models.Model):
 
 
 class InvoiceItem(models.Model):
-    VariabiltyType = [
-        ('f', 'Fixed'),
-        ('v', 'Variable'),
-    ]
-    ControlType = [
-        ('c', 'Controllable'),
-        ('n', 'Non Controllable'),
-    ]
+    # only in contalized costs
+    # VariabiltyType = [
+    #     ('f', 'Fixed'),
+    #     ('v', 'Variable'),
+    # ]
+    # ControlType = [
+    #     ('c', 'Controllable'),
+    #     ('n', 'Non Controllable'),
+    # ]
 
-    costVariability = models.CharField(max_length=12, choices=VariabiltyType, default='v')
-    costControllability = models.CharField(max_length=12, choices=VariabiltyType, default='c')
+    # costVariability = models.CharField(max_length=12, choices=VariabiltyType, default='v')
+    # costControllability = models.CharField(max_length=12, choices=VariabiltyType, default='c')
 
     invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE, null=True)
     article = models.ForeignKey(Article, on_delete=models.SET_NULL, null=True)
