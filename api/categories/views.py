@@ -9,7 +9,7 @@ from .serializers import CategorySerializer
 def categoryOverview(request):
     api_urls = {
         'list all categories': '/api/categories/category-list',
-
+        'list food categories': '/api/categories/foodcategory-list',
         'category detail  ': '/api/categories/detail/{categoryID}',
         'create new category ': '/api/categories/create',
         'update category ': '/api/categories/update/{categoryID}',
@@ -24,5 +24,12 @@ def categoryOverview(request):
 @api_view(['GET'])
 def categoryList(request):
     categories = Category.objects.all()
+    serializer = CategorySerializer(categories, many=True)
+    return Response(serializer.data)
+
+# list food categories
+@api_view(['GET'])
+def foodCategoryList(request):
+    categories = Category.objects.filter(type='fd')
     serializer = CategorySerializer(categories, many=True)
     return Response(serializer.data)

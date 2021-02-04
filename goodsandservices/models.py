@@ -13,8 +13,8 @@ class GoodAndService(models.Model):
         ('n', 'Non Controllable'),
     ]
 
-    costVariability = models.CharField(max_length=12, choices=VariabiltyType, default='v')
-    costControllability = models.CharField(max_length=12, choices=VariabiltyType, default='c')
+    costVariability = models.CharField(max_length=12, choices=VariabiltyType, default='v', null=True)
+    costControllability = models.CharField(max_length=12, choices=VariabiltyType, default='c', null=True)
 
     name = models.CharField(max_length=100)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
